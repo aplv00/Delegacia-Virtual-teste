@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Delegacia Virtual - Polícia Civil</title>
+  <script src="https://cdn.jsdelivr.net/npm/@openai/chatkit"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #chatkit-root {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="chatkit-root"></div>
+
+  <script>
+    window.onload = async () => {
+      try {
+        const chat = await window.ChatKit.mount({
+          element: document.getElementById("chatkit-root"),
+          // ID do fluxo de trabalho criado no ChatGPT Studio
+          workflowId: "wf_69833bd5c5708190b09670464f5c94860921505c7d6b6a41",
+          version: 2,
+          // Chave pública do domínio autorizado
+          domainKey: "domain_pk_698360d3d11c8190a639ba682154c37004d1b620be638378"
+        });
+      } catch (err) {
+        console.error("❌ Erro ao carregar ChatKit:", err);
+        document.getElementById("chatkit-root").innerText = "Erro ao carregar o atendimento virtual.";
+      }
+    };
+  </script>
+</body>
+</html>
